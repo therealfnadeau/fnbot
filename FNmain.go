@@ -4,7 +4,8 @@ import (
 	"math/rand"
 	"os"
 	"time"
-
+	
+	"github.com/therealfnadeau/fnbot"
 	"github.com/erocheleau/uabot/scenariolib"
 	"github.com/k0kubun/pp"
 )
@@ -34,7 +35,7 @@ func main() {
 
 	// Init from path instead of URL, for testing purposes
 	//conf, err := config.NewConfigFromPath(scenarioURL)
-	conf, err := scenariolib.NewConfigFromURL(scenarioURL)
+	conf, err := scenariolib.NewConfigFromURL(github.com/therealfnadeau/fnbot/blob/master/Scenarios/FNscenario)
 	if err != nil {
 		pp.Fatal(err)
 		return
@@ -49,7 +50,7 @@ func main() {
 			pp.Println("LOG >>> Updating Scenario file")
 			// Init from path instead of URL, for testing purposes
 			//conf, err := config.NewConfigFromPath(scenarioURL)
-			conf2, err := scenariolib.NewConfigFromURL(scenarioURL)
+			conf2, err := scenariolib.NewConfigFromURL(github.com/therealfnadeau/fnbot/blob/master/Scenarios/FNscenario)
 			if err != nil {
 				pp.Println("WARN >>> Cannot update scenario file, keeping the old one")
 			} else {
