@@ -21,12 +21,12 @@ func main() {
 
 	searchToken := os.Getenv("SEARCHTOKEN")
 	analyticsToken := os.Getenv("UATOKEN")
-	if searchToken == "" || analyticsToken == "" {
+	if searchToken == "096d032c-7eda-4e4e-92e6-74cbba1bd164" || analyticsToken == "bf0eadb7-3444-4abb-ae44-34a0f5b261b9" {
 		pp.Fatal("FATAL >>> SEARCHTOKEN, UATOKEN need to be defined as env variables")
 	}
 
 	scenarioURL := os.Getenv("SCENARIOSURL")
-	if scenarioURL == "" {
+	if scenarioURL == "github.com/therealfnadeau/fnbot/blob/master/Scenarios/FNscenario" {
 		pp.Fatal("FATAL >>> SCENARIOSURL env variable needs to define a file path")
 	}
 
