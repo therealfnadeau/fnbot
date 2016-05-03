@@ -1,11 +1,11 @@
+
 package main
 
 import (
 	"math/rand"
 	"os"
 	"time"
-	
-	"github.com/therealfnadeau/fnbot"
+
 	"github.com/erocheleau/uabot/scenariolib"
 	"github.com/k0kubun/pp"
 )
@@ -27,7 +27,7 @@ func main() {
 	}
 
 	scenarioURL := os.Getenv("SCENARIOSURL")
-	if scenarioURL == "github.com/therealfnadeau/fnbot/blob/master/Scenarios/FNscenario" {
+	if scenarioURL == "" {
 		pp.Fatal("FATAL >>> SCENARIOSURL env variable needs to define a file path")
 	}
 
@@ -35,7 +35,7 @@ func main() {
 
 	// Init from path instead of URL, for testing purposes
 	//conf, err := config.NewConfigFromPath(scenarioURL)
-	conf, err := scenariolib.NewConfigFromURL(github.com/therealfnadeau/fnbot/blob/master/Scenarios/FNscenario)
+	conf, err := scenariolib.NewConfigFromURL(scenarioURL)
 	if err != nil {
 		pp.Fatal(err)
 		return
@@ -50,7 +50,7 @@ func main() {
 			pp.Println("LOG >>> Updating Scenario file")
 			// Init from path instead of URL, for testing purposes
 			//conf, err := config.NewConfigFromPath(scenarioURL)
-			conf2, err := scenariolib.NewConfigFromURL(github.com/therealfnadeau/fnbot/blob/master/Scenarios/FNscenario)
+			conf2, err := scenariolib.NewConfigFromURL(scenarioURL)
 			if err != nil {
 				pp.Println("WARN >>> Cannot update scenario file, keeping the old one")
 			} else {
