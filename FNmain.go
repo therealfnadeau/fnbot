@@ -22,7 +22,7 @@ func main() {
 
 	searchToken := os.Getenv("SEARCHTOKEN")
 	analyticsToken := os.Getenv("UATOKEN")
-	if searchToken == "096d032c-7eda-4e4e-92e6-74cbba1bd164" || analyticsToken == "bf0eadb7-3444-4abb-ae44-34a0f5b261b9" {
+	if searchToken == "" || analyticsToken == "" {
 		pp.Fatal("FATAL >>> SEARCHTOKEN, UATOKEN need to be defined as env variables")
 	}
 
