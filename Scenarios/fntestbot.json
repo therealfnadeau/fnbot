@@ -79,7 +79,7 @@
 		] },
 
 	{ "name"   : "Mobile GQ -> C(40%) -> GQ -> C(30%) -> GQ -> C(20%) -> GQ -> C(50%) -> GQ -> C(50%)",
-		"weight" : 1,
+		"weight" : 2,
 		"events" : [
 			{ "type" : "Search", "arguments" : { "queryText" : "", "goodQuery" : true, "mobile" : true} },
 			{ "type" : "Click", "arguments" : { "docNo" :-1, "offset" : 1,  "probability" : 0.4 } },
@@ -104,7 +104,8 @@
 		"weight" : 3,
 		"events" : [
 			{ "type" : "Search", "arguments" : { "queryText" : "install hdmi-QAM", "goodQuery" : false } },
-			{ "type" : "SearchAndClick", "arguments" : { "queryText" : "convert coaxial cable to hdmi", "docClickTitle" : "How to Convert Coaxial Cable to HDMI", "goodQuery" : false } },
+			{ "type" : "SearchAndClick", "arguments" : { "queryText" : "convert coaxial cable to hdmi", "docClickTitle" : "How to Convert Coaxial Cable to HDMI", "goodQuery" : false } }
+		] },	
 	{ "name"   : "GQ with tabchange to youtube-> GQ -> C(40%)",
 		"weight" : 2,
 		"events" : [
@@ -113,7 +114,7 @@
 			{ "type" : "Click", "arguments" : { "docNo" :-1, "offset" : 1,  "probability" : 0.3 } } 
 		] },
 	{ "name"   : "Mobile GQ with tabchange to youtube-> GQ -> C(40%)",
-		"weight" : 2,
+		"weight" : 3,
 		"events" : [
 			{ "type" : "Search", "arguments" : { "queryText" : "", "goodQuery" : true, "mobile" : true } },
 			{ "type" : "TabChange", "arguments" : { "tabName" : "YOUTUBE", "tabCQ" : "@sysfiletype==\"youtubevideo\"" } },			
@@ -137,15 +138,45 @@
 		"weight" : 2,
 		"events" : [
 			{ "type" : "Search", "arguments" : { "queryText" : "", "goodQuery" : true } },
-			{ "type" : "TabChange", "arguments" : { "tabName" : "KB", "tabCQ" : "@sysfiletype==\"KB\"" } },			
+			{ "type" : "TabChange", "arguments" : { "tabName" : "KB", "tabCQ" : "@sysfiletype==\"@sfkbid\"" } },			
 			{ "type" : "Click", "arguments" : { "docNo" :-1, "offset" : 1,  "probability" : 0.2 } }
 		] },
 	{ "name"   : "GQ with tabchange to Knowledge> GQ -> C(40%)",
 		"weight" : 2,
 		"events" : [
 			{ "type" : "Search", "arguments" : { "queryText" : "", "goodQuery" : true } },
-			{ "type" : "TabChange", "arguments" : { "tabName" : "Knowledge", "tabCQ" : "@sysfiletype==\"Knowledge\"" } },			
+			{ "type" : "TabChange", "arguments" : { "tabName" : "Knowledge", "tabCQ" : "@sysfiletype==\"Oracle Knowledge\"" } },			
 			{ "type" : "Click", "arguments" : { "docNo" :-1, "offset" : 1,  "probability" : 0.2 } }
 		] },
+	{ "name"   : "GQ with facetchange to Type (message)> GQ -> C(40%)",
+		"weight" : 1,
+		"events" : [
+			{ "type" : "Search", "arguments" : { "queryText" : "", "goodQuery" : true } },
+			{ "type" : "FacetSelect", "arguments" : { "facetId" : "objecttype", "facetValue": "Message", "facetTitle": "Type", "facetField": "@objecttype", "facetAQ" : "@syssource==(\"SharePoint Online - Bombardier\", \"Oracle Knowledge\", \"YouTube - Bestbuy\" \"YouTube - Sony\", \"Confluence - Besttech\", \"Dropbox - demo_besttech@coveo.com\", \"SharePoint - https://sp2010.coveodemo.com\", \"Salesforce - Knowledge - demouser@besttech.early\", \"Salesforce - demouser@besttech.early\", \"Lithium - http://community.sony.com\", \"Lithium - http://community.futureshop.ca/\", \"Lithium - http://forums.bestbuy.com/\"" } },					
+			{ "type" : "Click", "arguments" : { "docNo" :-1, "offset" : 1,  "probability" : 0.1 } }
+		] },
+	{ "name"   : "GQ with facetchange to Repository (Youtube)> GQ -> C(40%)",
+		"weight" : 3,
+		"events" : [
+			{ "type" : "Search", "arguments" : { "queryText" : "", "goodQuery" : true } },
+			{ "type" : "FacetSelect", "arguments" : { "facetId" : "@beautifulrepositorytype", "facetValue": "Youtube", "facetTitle": "Repository", "facetField": "@objecttype", "facetAQ" : "@syssource==\"YouTube - Bestbuy\", \"YouTube - Sony\"" } },					
+			{ "type" : "Click", "arguments" : { "docNo" :-1, "offset" : 1,  "probability" : 0.35 } }
+		] },
+	{ "name"   : "GQ with facetchange to Repository (Sharepoint)> GQ -> C(40%)",
+		"weight" : 1,
+		"events" : [
+			{ "type" : "Search", "arguments" : { "queryText" : "", "goodQuery" : true } },
+			{ "type" : "FacetSelect", "arguments" : { "facetId" : "@beautifulrepositorytype", "facetValue": "Sharepoint", "facetTitle": "Repository", "facetField": "@objecttype", "facetAQ" : "@syssource==\"SharePoint Online - Bombardier\"" } },					
+			{ "type" : "Click", "arguments" : { "docNo" :-1, "offset" : 1,  "probability" : 0.4 } }
+		] },
+	{ "name"   : "GQ with facetchange to Year (2016)> GQ -> C(40%)",
+		"weight" : 1,
+		"events" : [
+			{ "type" : "Search", "arguments" : { "queryText" : "", "goodQuery" : true } },
+			{ "type" : "FacetSelect", "arguments" : { "facetId" : "@sysyear", "facetValue": "2016", "facetTitle": "Year", "facetField": "@objecttype", "facetAQ" : "@syssource==(\"SharePoint Online - Bombardier\", \"Oracle Knowledge\", \"YouTube - Bestbuy\" \"YouTube - Sony\", \"Confluence - Besttech\", \"Dropbox - demo_besttech@coveo.com\", \"SharePoint - https://sp2010.coveodemo.com\", \"Salesforce - Knowledge - demouser@besttech.early\", \"Salesforce - demouser@besttech.early\", \"Lithium - http://community.sony.com\", \"Lithium - http://community.futureshop.ca/\", \"Lithium - http://forums.bestbuy.com/\"" } },					
+			{ "type" : "Click", "arguments" : { "docNo" :-1, "offset" : 1,  "probability" : 0.2 } }
+		] }				
 	]
-}		
+}
+
+
